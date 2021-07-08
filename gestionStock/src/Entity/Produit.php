@@ -41,6 +41,10 @@ class Produit
      * @ORM\Column(type="integer")
      */
     private $quantity;
+    /**
+     * @ORM\ManyToOne(targetEntity=Fournisseur::class, inversedBy="produits")
+     */
+    private $fournisseur;
 
     public function getId(): ?int
     {
@@ -103,6 +107,17 @@ class Produit
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+    public function getFournisseur(): ?Fournisseur
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?Fournisseur $fournisseur): self
+    {
+        $this->fournisseur = $fournisseur;
 
         return $this;
     }

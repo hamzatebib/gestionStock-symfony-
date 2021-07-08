@@ -45,7 +45,7 @@ class FournisseurController extends AbstractController
             $em->persist($fournisseur);
             $em->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('listeFournisseur');
         }
         return $this->render('fournisseur/new.html.twig', [
             "form" => $form->createView()
@@ -64,6 +64,7 @@ class FournisseurController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            return $this->redirectToRoute('listeFournisseur');
         }
 
         return $this->render("fournisseur/update.html.twig", [
@@ -82,7 +83,7 @@ class FournisseurController extends AbstractController
         $em->remove($fournisseur);
         $em->flush();
 
-        return $this->redirectToRoute("home");
+        return $this->redirectToRoute("listeFournisseur");
     }
     /**
      * @Route("/{id}/show", name="fournisseur_show")

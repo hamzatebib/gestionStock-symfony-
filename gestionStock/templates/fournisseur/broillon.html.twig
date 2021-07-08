@@ -1,74 +1,30 @@
-{% extends 'base.html.twig' %}
+<?php
 
-{% block title %}
-	Ajouter un fournisseur
-{% endblock %}
+namespace App\Form;
 
-{% block body %}
+use App\Entity\Produit;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-	<h1>AJouter un fournisseur
-	</h1>
+class ProduitType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('label')
+            ->add('price')
+            ->add('photoface')
+            ->add('photoprofil')
+            ->add('quantity')
+            ->add('fournisseur')
+        ;
+    }
 
-
-	{{ form_start(form) }}
-	<div
-		class="content-body" style="/* min-height: 884px; */">
-
-
-		<!-- row -->
-
-		<div class="container-fluid">
-			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="form-validation">
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label" for="val-username">Username
-											<span class="text-danger">*</span>
-										</label>
-										<div class="col-lg-6">
-											<input type="text" id="fournisseur_name" name="fournisseur[name]" required="required" class="form-control">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label" for="val-email">Address
-											<span class="text-danger">*</span>
-										</label>
-										<div class="col-lg-6">
-											<input type="text" id="fournisseur_address" name="fournisseur[address]" required="required" class="form-control">
-										</div>
-
-
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label" for="val-password">email
-											<span class="text-danger">*</span>
-										</label>
-										<div class="col-lg-6">
-											<input type="text" id="fournisseur_email" name="fournisseur[email]" required="required" class="form-control">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label" for="val-confirm-password">Phone
-											<span class="text-danger">*</span>
-										</label>
-										<div class="col-lg-6">
-											<input type="text" id="fournisseur_phone" name="fournisseur[phone]" required="required" class="form-control">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<button class="btn btn-primary">
-			Ajouter
-		</button>
-		{{ form_end(form) }}
-	{% endblock %}
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Produit::class,
+        ]);
+    }
+}

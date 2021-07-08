@@ -39,7 +39,7 @@ class ProduitController extends AbstractController
             return $this->redirectToRoute('produit/new.html.twig');
         }
         return $this->render('produit/new.html.twig', [
-            "formProduit" => $form->createView()
+            "form" => $form->createView()
         ]);
     }
 }
