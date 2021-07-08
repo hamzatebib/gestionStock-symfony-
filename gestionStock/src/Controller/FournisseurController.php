@@ -13,15 +13,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FournisseurController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/listeF", name="listeFournisseur")
      */
     public function index(): Response
     {
         $fournisseurs = $this->getDoctrine()->getRepository(Fournisseur::class)->findAll();
         return $this->render(
-            'index.html.twig',
+            'fournisseur/listeF.html.twig',
             [
-                'fourbisseurs' => $fournisseurs
+                'fournisseurs' => $fournisseurs
             ]
         );
     }
@@ -45,7 +45,7 @@ class FournisseurController extends AbstractController
             $em->persist($fournisseur);
             $em->flush();
 
-            return $this->redirectToRoute('fournisseur');
+            return $this->redirectToRoute('index');
         }
         return $this->render('fournisseur/new.html.twig', [
             "form" => $form->createView()

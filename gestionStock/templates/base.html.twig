@@ -27,14 +27,13 @@
 	</head>
 	<body>
 		{% include('./header.html.twig') %}
-		<div class="card-body pb-0 d-flex justify-content-between">
 
-			{% block body %}
-				<div class="nk-sidebar">
-					<div class="nk-nav-scroll"></div>
-				</div>
-			{% endblock %}
-		</div>
+
+		{% block body %}
+			<div class="nk-sidebar">
+				<div class="nk-nav-scroll"></div>
+			</div>
+		{% endblock %}
 
 
 		{% include('./footer.html.twig') %}
